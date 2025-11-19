@@ -1,15 +1,28 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #ffffff;
+    --section-bg-light: #f8f9fa;
+    --text-color: #343a40;
+    --text-light: #ffffff;
+    --navbar-bg: rgba(33, 37, 41, 0.95);
+    --footer-bg: #212529;
+}
+
 /* General Body Styles */
 body {
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
-    padding-top: 56px; /* Adjust for fixed navbar height */
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-top: 56px;
 }
 
 /* Navbar Styles */
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    background-color: var(--navbar-bg) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 
 .navbar-brand {
@@ -23,23 +36,32 @@ body {
     transition: color 0.3s ease;
 }
 
-.nav-link:hover {
-    color: #007bff !important; /* Bootstrap primary blue */
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color) !important;
 }
 
 /* Hero Section */
 #home {
-    background: linear-gradient(to right, #007bff, #0056b3); /* Blue gradient */
-    color: white;
+    background: linear-gradient(45deg, #007bff, #00c6ff, #ee82ee);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-light);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-shadow: 0 2px 4px rgba(0,0,0,.2);
+    text-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 #home .display-3 {
     font-size: 4rem;
+    font-weight: 700;
     margin-bottom: 1rem;
 }
 
@@ -50,8 +72,8 @@ body {
 
 /* Section Styling */
 section {
-    padding: 60px 0;
-    border-bottom: 1px solid #eee;
+    padding: 80px 0;
+    border-bottom: 1px solid #e9ecef;
 }
 
 section:last-of-type {
@@ -59,11 +81,11 @@ section:last-of-type {
 }
 
 h2 {
-    font-weight: 600;
-    margin-bottom: 30px;
-    color: #007bff;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--primary-color);
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 h2::after {
@@ -72,86 +94,74 @@ h2::after {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    height: 3px;
-    width: 60px;
-    background-color: #007bff;
+    height: 4px;
+    width: 70px;
+    background-color: var(--primary-color);
     border-radius: 5px;
 }
 
-h3 {
-    font-weight: 500;
-    color: #333;
-}
-
-/* About Section */
-#about p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
 /* Skills Section */
-#skills .list-group-item {
-    border: none;
-    padding: 10px 0;
-    font-size: 1.1rem;
-    background-color: transparent;
+.skill-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    transition: all 0.3s ease;
+    color: var(--primary-color);
 }
 
-#skills .list-group-item::before {
-    content: "✔ ";
-    color: #28a745; /* Green checkmark */
-    margin-right: 8px;
+.skill-icon:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    color: #0056b3;
 }
 
 /* Projects Section */
 .card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,.1);
 }
 
 .card-img-top {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 200px; /* Fixed height for project images */
-    object-fit: cover; /* Ensure images cover the area */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 220px;
+    object-fit: cover;
 }
 
 .card-title {
-    color: #007bff;
+    color: var(--primary-color);
     font-weight: 600;
 }
 
-.card-subtitle {
-    color: #6c757d !important;
-}
-
 /* Contact Section */
-#contact a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.social-icon {
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
 }
 
-#contact a:hover {
-    color: #0056b3;
+.social-icon:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
 }
 
 /* Footer */
 footer {
-    background-color: #212529 !important; /* Darker than navbar for contrast */
+    background-color: var(--footer-bg) !important;
     color: #adb5bd;
     font-size: 0.9rem;
-}
-
-footer p {
-    margin-bottom: 0.5rem;
 }
 
 /* Responsive Adjustments */
@@ -159,11 +169,9 @@ footer p {
     #home .display-3 {
         font-size: 3rem;
     }
-
     #home .lead {
         font-size: 1.2rem;
     }
-
     h2 {
         font-size: 1.8rem;
     }
