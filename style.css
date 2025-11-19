@@ -1,12 +1,14 @@
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --background-color: #ffffff;
-    --section-bg-light: #f8f9fa;
-    --text-color: #343a40;
+    --primary-color: #00aaff;
+    --secondary-color: #8a94a7;
+    --background-color: #121212;
+    --section-bg-color: #1a1a1a;
+    --text-color: #e1e1e1;
     --text-light: #ffffff;
-    --navbar-bg: rgba(33, 37, 41, 0.95);
-    --footer-bg: #212529;
+    --navbar-bg: rgba(26, 26, 26, 0.85);
+    --footer-bg: #1a1a1a;
+    --card-bg: #222222;
+    --card-border: #333333;
 }
 
 /* General Body Styles */
@@ -22,17 +24,19 @@ body {
 .navbar {
     background-color: var(--navbar-bg) !important;
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
 }
 
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
+    color: var(--primary-color) !important;
 }
 
 .nav-link {
     font-weight: 500;
     margin-left: 15px;
+    color: var(--text-light) !important;
     transition: color 0.3s ease;
 }
 
@@ -42,21 +46,13 @@ body {
 
 /* Hero Section */
 #home {
-    background: linear-gradient(45deg, #007bff, #00c6ff, #ee82ee);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    background: var(--background-color);
     color: var(--text-light);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-shadow: 0 2px 4px rgba(0,0,0,.3);
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    text-shadow: 0 2px 4px rgba(0,0,0,.5);
 }
 
 #home .display-3 {
@@ -68,16 +64,18 @@ body {
 #home .lead {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    color: var(--secondary-color);
 }
 
 /* Section Styling */
 section {
     padding: 80px 0;
-    border-bottom: 1px solid #e9ecef;
+    background-color: var(--section-bg-color);
+    border-bottom: 1px solid var(--card-border);
 }
 
-section:last-of-type {
-    border-bottom: none;
+section.bg-light {
+    background-color: var(--section-bg-color) !important;
 }
 
 h2 {
@@ -105,33 +103,38 @@ h2::after {
     width: 100px;
     height: 100px;
     margin: 0 auto;
-    background-color: var(--background-color);
+    background-color: var(--card-bg);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,.3);
     transition: all 0.3s ease;
     color: var(--primary-color);
 }
 
 .skill-icon:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.15);
-    color: #0056b3;
+    box-shadow: 0 8px 24px rgba(0, 170, 255, 0.2);
+    color: #fff;
+}
+
+h5 {
+    color: var(--text-light);
 }
 
 /* Projects Section */
 .card {
-    border: 1px solid #e9ecef;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,.4);
 }
 
 .card-img-top {
@@ -139,11 +142,21 @@ h2::after {
     border-top-right-radius: 15px;
     height: 220px;
     object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    opacity: 1;
 }
 
 .card-title {
     color: var(--primary-color);
     font-weight: 600;
+}
+
+.card-text {
+    color: var(--secondary-color);
 }
 
 /* Contact Section */
@@ -160,8 +173,9 @@ h2::after {
 /* Footer */
 footer {
     background-color: var(--footer-bg) !important;
-    color: #adb5bd;
+    color: var(--secondary-color);
     font-size: 0.9rem;
+    border-top: 1px solid var(--card-border);
 }
 
 /* Responsive Adjustments */
